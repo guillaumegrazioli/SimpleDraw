@@ -19,8 +19,8 @@ import java.util.SortedSet;
 
 public class SelectionTool extends DrawingTool {
     
-        private Shape pickedShape = null;
-        private Set<Shape> myShapeList = new HashSet<Shape>();
+        private final Shape pickedShape = null;
+        private final Set<Shape> myShapeList = new HashSet<>();
 	private Point myLastPoint;
 
 	public SelectionTool(DrawingPanel panel) {
@@ -43,8 +43,8 @@ public class SelectionTool extends DrawingTool {
 		Shape pickedShape = myDrawing.pickShapeAt(e.getPoint());
 		myLastPoint = e.getPoint();
 		if (pickedShape != null){
-                    myShapeList.add(pickedShape);
-                    if (pickedShape.isSelected()){
+                    myShapeList.add(pickedShape); // on ajoute la pickedShape à l'ensemble de Shapes
+                    if (pickedShape.isSelected()){ // Si la pickedShape est déjà sélectionnée; on la déselectionne
                             pickedShape.setSelected(false);
                         /*for ( Shape shape: myShapeList){
                             if(shape == pickedShape && shape.isSelected()){
@@ -53,7 +53,7 @@ public class SelectionTool extends DrawingTool {
                         }*/
                     }else{
                         //myShapeList.add(pickedShape);
-                        pickedShape.setSelected(true);
+                        pickedShape.setSelected(true); // On sélectionne la shape
                         /*for ( Shape shape: myShapeList){
                             if(shape == pickedShape && !shape.isSelected()){
                                 shape.setSelected(true);
